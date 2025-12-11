@@ -1,43 +1,46 @@
 const express = require('express');
-const { Pool } = require('pg');
 const cors = require('cors');
+const { Pool } = require('pg');
 
 const app = express();
-app.use(express.json());
-app.use(cors());
 
-// --- CONEXIÓN A LA BASE DE DATOS (POSTGRES) ---
+// --- ¡ESTA ES LA LÍNEA QUE TE FALTA! ---
+// Esto hace que el servidor pueda mostrar tus archivos index.html y menu.html
+app.use(express.static(__dirname)); 
+// ---------------------------------------
+
+app.use(cors());
+app.use(express.json());
+
+// Conexión a Base de Datos
 const pool = new Pool({
-    user: 'postgres',       
+    user: 'postgres',
     host: 'localhost',
-    database: 'ollas_y_peroles_db', // <--- CAMBIO 1: Nombre correcto de la BD nueva
-    password: '1234',        // <--- ¡REVISA QUE ESTA SEA TU CONTRASEÑA REAL!
+    database: 'ollas_y_peroles_db', 
+    password: '1234',
     port: 5432,
 });
 
 // Ruta de Login
 app.post('/login', async (req, res) => {
     const { usuario, password } = req.body;
-    
-    try {
-        // <--- CAMBIO 2: Usamos 'nombre_usuario' en vez de 'username'
-        const resultado = await pool.query(
-            'SELECT * FROM usuarios WHERE nombre_usuario = $1 AND password = $2', 
-            [usuario, password]
-        );
 
-        if (resultado.rows.length > 0) {
-            // Devolvemos el nombre real que viene de la BD
-            res.json({ exito: true, usuario: resultado.rows[0].nombre_usuario });
+    try {
+        const query = 'SELECT * FROM usuarios WHERE nombre_usuario = $1 AND clave = $2';
+        const result = await pool.query(query, [usuario, password]);
+
+        if (result.rows.length > 0) {
+            res.json({ exito: true, usuario: result.rows[0].nombre_usuario });
         } else {
-            res.json({ exito: false, mensaje: 'Usuario o clave incorrectos' });
+            res.json({ exito: false, mensaje: "Usuario o contraseña incorrectos" });
         }
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ exito: false, mensaje: 'Error de servidor' });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ exito: false, mensaje: "Error de servidor/BD" });
     }
 });
 
 app.listen(3000, () => {
-    console.log('Servidor de OLLAS corriendo en puerto 3000');
+    console.log('✅ Servidor listo en: http://localhost:3000/index.html');
 });

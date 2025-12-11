@@ -1,4 +1,4 @@
-/* Variables de la marca (mismas que el sistema principal) */
+/* Variables de la marca */
 :root {
     --color-ladrillo: #D35400; 
     --color-oscuro: #2C3E50;
@@ -11,7 +11,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-color: var(--color-oscuro); /* Fondo oscuro para resaltar el login */
+    background-color: var(--color-oscuro);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,9 +20,10 @@ body {
 
 .contenedor-principal {
     width: 100%;
-    padding: 20px;
     display: flex;
     justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .tarjeta-login {
@@ -53,7 +54,6 @@ body {
     margin-bottom: 10px;
 }
 
-/* Inputs y Etiquetas */
 .grupo-input {
     margin-bottom: 20px;
     text-align: left;
@@ -81,7 +81,7 @@ body {
 
 .input-con-icono input {
     width: 100%;
-    padding: 12px 12px 12px 40px; /* Espacio para el icono */
+    padding: 12px 12px 12px 40px;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-sizing: border-box;
@@ -94,7 +94,6 @@ body {
     outline: none;
 }
 
-/* Botón */
 .boton-ingresar {
     width: 100%;
     background-color: var(--color-ladrillo);
@@ -113,12 +112,12 @@ body {
     background-color: #a04000;
 }
 
-/* Mensajes y Links */
 .mensaje-error {
     color: var(--rojo-error);
     font-size: 0.85rem;
     margin-bottom: 15px;
-    min-height: 20px; /* Para que no salte el diseño */
+    min-height: 20px;
+    font-weight: bold;
 }
 
 .pie-login {
@@ -129,8 +128,4 @@ body {
 .pie-login a {
     color: var(--color-oscuro);
     text-decoration: none;
-}
-
-.pie-login a:hover {
-    text-decoration: underline;
 }

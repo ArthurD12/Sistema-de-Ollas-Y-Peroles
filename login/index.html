@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <div class="contenedor-principal">
         <div class="tarjeta-login">
             <div class="encabezado-login">
@@ -19,7 +18,7 @@
 
             <form id="formLogin">
                 <div class="grupo-input">
-                    <label for="usuario">Usuario</label>
+                    <label>Usuario</label>
                     <div class="input-con-icono">
                         <i class="fa-solid fa-user"></i>
                         <input type="text" id="usuario" placeholder="Ej. admin" required>
@@ -27,24 +26,19 @@
                 </div>
 
                 <div class="grupo-input">
-                    <label for="password">Contraseña</label>
+                    <label>Contraseña</label>
                     <div class="input-con-icono">
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" id="password" placeholder="••••••" required>
                     </div>
                 </div>
 
-                <div id="mensajeError" class="mensaje-error"></div>
+                <div id="mensajeError" class="mensaje-error" style="color: red; margin-top: 10px;"></div>
 
                 <button type="submit" class="boton-ingresar">INGRESAR</button>
             </form>
-            
-            <div class="pie-login">
-                <a href="#">¿Olvidaste tu contraseña?</a>
-            </div>
         </div>
     </div>
-
     <script src="login.js"></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Ollas y Peroles</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-utensils"></i> Ollas y Peroles
+        </div>
+        <div class="user-info">
+            <span id="nombreUsuario" class="usuario-texto">Cargando...</span>
+            <button onclick="cerrarSesion()" class="btn-logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Salir
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>¿Qué deseas hacer hoy?</h1>
+        
+        <div class="grid-menu">
+            
+            <div class="card" onclick="irHerramientasTrabajo()">
+                <div class="icon-container trabajo">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h3>Zona de Trabajo</h3>
+                <p>Gestión de pedidos, caja y cocina.</p>
+            </div>
+
+            <div class="card" onclick="irVistaCliente()">
+                <div class="icon-container cliente">
+                    <i class="fa-solid fa-eye"></i>
+                </div>
+                <h3>Vista Cliente</h3>
+                <p>Visualizar la carta digital.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="menu.js"></script>
+</body>
+</html>
