@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Ollas y Peroles</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="brand">
+            <i class="fa-solid fa-utensils"></i> Ollas y Peroles
+        </div>
+        <div class="user-info">
+            <span id="nombreUsuario">Usuario</span>
+            <button onclick="cerrarSesion()" class="btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Salir</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>🍽️ Seleccione una Opción</h1>
+        
+        <div class="grid-menu">
+            <div class="card" onclick="irAPedidos()">
+                <div class="icon-container">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <h3>Nuevo Pedido</h3>
+                <p>Registrar comanda para una mesa.</p>
+            </div>
+
+            <div class="card" onclick="irACocina()">
+                <div class="icon-container">
+                    <i class="fa-solid fa-fire-burner"></i>
+                </div>
+                <h3>Monitor de Cocina</h3>
+                <p>Ver y atender pedidos pendientes.</p>
+            </div>
+
+            <div class

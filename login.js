@@ -1,45 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     const formulario = document.getElementById('formLogin');
     const mensajeError = document.getElementById('mensajeError');
 
     formulario.addEventListener('submit', (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Evita que se recargue la página sola
 
-        // 1. Capturar datos
+        // 1. Capturar lo que escribió el usuario
         const usuario = document.getElementById('usuario').value;
         const password = document.getElementById('password').value;
 
-        // Limpiar mensajes anteriores
-        mensajeError.textContent = '';
+        // Limpiar errores previos
+        mensajeError.textContent = 'Verificando datos...';
 
-        // 2. Validación simple (Frontend)
+        // 2. Validación básica (que no esté vacío)
         if (usuario === '' || password === '') {
             mensajeError.textContent = 'Por favor, complete todos los campos.';
             return;
         }
 
-        // ---------------------------------------------------------
-        // AQUÍ CONECTAREMOS LA BASE DE DATOS LUEGO
-        // Por ahora, simulamos que verificamos credenciales:
-        // ---------------------------------------------------------
-        
-        console.log("Intentando login con:", usuario);
+        // =======================================================
+        // CÓDIGO NUEVO: CONEXIÓN REAL A TU BASE DE DATOS
+        // =======================================================
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ usuario: usuario, password: password })
+        })
+        .then(respuesta => respuesta.json())
+        .then(data => {
+            console.log("Respuesta del servidor:", data);
 
-        // SIMULACIÓN:
-        if (usuario === 'admin' && password === '1234') {
-            // Login Exitoso
-            alert('¡Bienvenido al sistema!');
-            
-            // Redirigir al sistema principal (el archivo anterior)
-            window.location.href = 'index.html'; 
-        } else {
-            // Login Fallido
-            mensajeError.textContent = 'Usuario o contraseña incorrectos.';
-            
-            // Efecto visual de error en el input (opcional)
-            document.getElementById('password').value = '';
-            document.getElementById('usuario').focus();
-        }
+            if (data.exito === true) {
+                // --- SI LA CONTRASEÑA ES CORRECTA EN POSTGRES ---
+                
+                // 1. Guardamos el usuario en la memoria del navegador
+                localStorage.setItem('usuario_ollas', data.usuario);
+                
+                // 2. ¡Nos vamos al MENÚ!
+                alert('¡Bienvenido ' + data.usuario + '!');
+                window.location.href = 'menu.html'; 
+                // NOTA: Si prefieres ir directo a los pedidos, cambia 'menu.html' por 'index.html'
+
+            } else {
+                // --- SI LA CONTRASEÑA ESTÁ MAL ---
+                mensajeError.textContent = '❌ ' + data.mensaje;
+                // Borramos la contraseña para que intente de nuevo
+                document.getElementById('password').value = '';
+            }
+        })
+        .catch(error => {
+            // --- SI EL SERVIDOR ESTÁ APAGADO ---
+            console.error('Error:', error);
+            mensajeError.textContent = 'Error: No se pudo conectar. Revisa que el servidor (node server.js) esté prendido.';
+        });
     });
 });
