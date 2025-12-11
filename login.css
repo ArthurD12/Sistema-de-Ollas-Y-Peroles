@@ -1,0 +1,136 @@
+/* Variables de la marca (mismas que el sistema principal) */
+:root {
+    --color-ladrillo: #D35400; 
+    --color-oscuro: #2C3E50;
+    --fondo-suave: #F4F6F6;
+    --blanco: #ffffff;
+    --rojo-error: #e74c3c;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--color-oscuro); /* Fondo oscuro para resaltar el login */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedor-principal {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.tarjeta-login {
+    background-color: var(--blanco);
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.encabezado-login h2 {
+    color: var(--color-oscuro);
+    margin-bottom: 5px;
+}
+
+.encabezado-login p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.icono-login {
+    font-size: 3rem;
+    color: var(--color-ladrillo);
+    margin-bottom: 10px;
+}
+
+/* Inputs y Etiquetas */
+.grupo-input {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.grupo-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-oscuro);
+    font-size: 0.9rem;
+}
+
+.input-con-icono {
+    position: relative;
+}
+
+.input-con-icono i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #95a5a6;
+}
+
+.input-con-icono input {
+    width: 100%;
+    padding: 12px 12px 12px 40px; /* Espacio para el icono */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+.input-con-icono input:focus {
+    border-color: var(--color-ladrillo);
+    outline: none;
+}
+
+/* Botón */
+.boton-ingresar {
+    width: 100%;
+    background-color: var(--color-ladrillo);
+    color: var(--blanco);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.boton-ingresar:hover {
+    background-color: #a04000;
+}
+
+/* Mensajes y Links */
+.mensaje-error {
+    color: var(--rojo-error);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    min-height: 20px; /* Para que no salte el diseño */
+}
+
+.pie-login {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.pie-login a {
+    color: var(--color-oscuro);
+    text-decoration: none;
+}
+
+.pie-login a:hover {
+    text-decoration: underline;
+}
