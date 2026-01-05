@@ -1,0 +1,241 @@
+:root {
+    --azul-marino: #001F3F; /* Navy */
+    --azul-rey: #0074D9;    /* Blue */
+    --blanco: #FFFFFF;
+    --gris-claro: #F4F4F4;
+    --verde-exito: #2ECC40;
+    --rojo-alerta: #FF4136;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    background-color: var(--gris-claro);
+    height: 100vh;
+    overflow: hidden; /* Evita scroll en la página general */
+}
+
+/* --- LOGIN --- */
+.pantalla-login {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--azul-marino);
+    color: var(--blanco);
+}
+
+.login-box {
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.login-box input {
+    padding: 15px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-box button {
+    background: var(--azul-rey);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.oculto { display: none !important; }
+
+/* --- INTERFAZ PRINCIPAL --- */
+.pantalla-pedidos {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    background-color: var(--azul-marino);
+    color: var(--blanco);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.info-logo { font-family: 'Montserrat', sans-serif; font-weight: bold; font-size: 1.5rem; }
+.btn-salir { background: var(--rojo-alerta); border: none; color: white; padding: 8px 15px; border-radius: 4px; cursor: pointer; }
+
+/* LAYOUT DE 2 COLUMNAS */
+.contenido-principal {
+    display: flex;
+    flex: 1; /* Ocupa el resto de la altura */
+    overflow: hidden;
+}
+
+/* IZQUIERDA: EL MENÚ */
+.columna-menu {
+    flex: 2; /* Ocupa 2/3 de la pantalla */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #eef2f5;
+}
+
+.tabs-categorias {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tab {
+    flex: 1;
+    padding: 20px;
+    background: white;
+    border: 2px solid var(--azul-marino);
+    color: var(--azul-marino);
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.tab.active, .tab:hover {
+    background: var(--azul-marino);
+    color: white;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    overflow-y: auto; /* Scroll solo en los productos */
+    padding-bottom: 20px;
+}
+
+.card-producto {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.2s;
+}
+
+.card-producto:active { transform: scale(0.95); border-color: var(--azul-rey); }
+.card-producto h4 { margin: 10px 0; color: var(--azul-marino); font-size: 1rem; }
+.card-producto .precio { color: var(--azul-rey); font-weight: bold; font-size: 1.2rem; }
+
+/* DERECHA: EL TICKET */
+.columna-ticket {
+    flex: 1; /* Ocupa 1/3 de la pantalla */
+    background: white;
+    border-left: 2px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+}
+
+.ticket-header { padding: 20px; background: var(--azul-rey); color: white; }
+.input-mesa { width: 90%; padding: 10px; border: none; border-radius: 4px; text-align: center; font-size: 1.2rem; margin-top: 10px; }
+
+.lista-pedido {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.item-ticket {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted #ccc;
+    font-size: 0.95rem;
+}
+.btn-borrar { color: red; cursor: pointer; margin-left: 10px; }
+
+.ticket-footer {
+    padding: 20px;
+    background: #f9f9f9;
+    border-top: 2px solid #ddd;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--azul-marino);
+    margin-bottom: 15px;
+}
+
+.btn-enviar-cocina {
+    width: 100%;
+    padding: 15px;
+    background: var(--verde-exito);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn-enviar-cocina:hover { background: #26ab35; }
+/* --- ESTILOS DEL TICKET (BOLETA) --- */
+.ticket-oculto {
+    display: none; /* Normalmente no se ve en el celular */
+}
+
+/* ESTO SOLO SUCEDE AL DARLE "IMPRIMIR" */
+@media print {
+    /* 1. Ocultamos TODA la aplicación del mozo */
+    body * {
+        visibility: hidden; 
+    }
+
+    /* 2. Mostramos SOLO el ticket */
+    #ticket-impresion, #ticket-impresion * {
+        visibility: visible;
+    }
+
+    /* 3. Posicionamos el ticket al inicio de la hoja */
+    #ticket-impresion {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 80mm; /* Ancho de ticket estándar */
+        font-family: 'Courier New', Courier, monospace; /* Letra de ticket */
+        font-size: 12px;
+        color: black;
+        padding: 5px;
+    }
+
+    /* Diseño interno del ticket */
+    .t-header { text-align: center; border-bottom: 1px dashed black; padding-bottom: 5px; margin-bottom: 10px; }
+    .t-titulo { font-size: 16px; font-weight: bold; text-transform: uppercase; }
+    .t-info { font-size: 10px; margin-bottom: 5px; }
+    
+    .t-tabla { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    .t-tabla th { text-align: left; border-bottom: 1px solid black; font-size: 10px; }
+    .t-tabla td { padding: 2px 0; font-size: 11px; }
+    .t-derecha { text-align: right; }
+    
+    .t-total { border-top: 1px dashed black; padding-top: 5px; text-align: right; font-size: 14px; font-weight: bold; }
+    .t-footer { text-align: center; margin-top: 20px; font-size: 10px; }
+}
