@@ -42,8 +42,11 @@ Con este sistema:
 
 ## Capturas de pantalla
 
-<!-- Agrega aquí 2 o 3 capturas: pantalla del mozo y pantalla de cocina -->
+<!-- aquí va 2 o 3 capturas: pantalla del mozo y pantalla de cocina -->
+
 <!-- ![Pantalla del mozo](docs/mozo.png) -->
+
+
 <!-- ![Pantalla de cocina](docs/cocina.png) -->
 
 ## Equipo
